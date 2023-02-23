@@ -9,5 +9,6 @@ export const  getUserInfo = (accountForm:userApi.accountUser)=>{
 }
 export const getHomeList = (currentPage:number,pageSize:number)=>{
      const store = useUserStore()
-    return requestInstance.get<any,userApi.ResponseSuccessList<ColumnProps>>(`zwz/api/list/showListInfo?currentPage=${currentPage}&pageSize=${pageSize}&account=${store.user.account}`)
+    // return requestInstance.get<any,userApi.ResponseSuccessList<ColumnProps>>(`zwz/api/list/showListInfo?currentPage=${currentPage}&pageSize=${pageSize}&account=${store.user.account}`)
+    return requestInstance.get<any,userApi.ResponseSuccessList<ColumnProps>>(`zwz/api/list/showListInfo?currentPage=${currentPage}&pageSize=${pageSize}`)
 }
