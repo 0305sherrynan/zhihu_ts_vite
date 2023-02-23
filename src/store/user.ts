@@ -22,11 +22,19 @@ export const useUserStore = defineStore('user', {
     },
     actions: {
         //获取列表资源
-        async fetchColumns(currentPage:number = 1,pageSize:number = 6){
+        async fetchColumns(currentPage:number = 0,pageSize:number = 3){
             try {
+                console.log(currentPage)
                 const data = await getHomeList(currentPage,pageSize)
                 console.log(data)
-                this.columns.data = data.data
+                // this.columns.data = data.data
+                data.data.forEach((item)=>{
+                    this.columns.data.push(item)
+                })
+                // console.log(this.columns.data.length)
+                this.columns.currentPage++
+                this.columns.total+=data.data.length
+
             } catch (error) {
                 Message.error((error as Error).message)                
             }
