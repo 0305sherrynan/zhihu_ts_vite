@@ -7,7 +7,7 @@ const listSqlMap = {
      * addInfo 增加user信息
      * updateInfo 更新user信息
     */
-    showListInfo:'select id,title,avatar,description from columnlist where columnlist.account = ?',
+    showListInfo:'select id,title,avatar,description from columnlist where columnlist.id >=? and columnlist.id <=?',
     loginSearch:"select * from user  where username = ? and password = ?",
     deleteInfoById:`delete from user where id = ?`,
     addInfo:'insert into user values(?,?,?,?)',
