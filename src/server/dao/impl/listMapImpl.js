@@ -22,8 +22,10 @@ module.exports = {
             // console.log(req)
             const params = req.query
             console.log(params)
-            // console.log(store.user.account)
-            connection.query($sql.showListInfo,[params.account],
+            const min = params.currentPage*params.pageSize+1
+            const max = min+Number(params.pageSize)-1
+            console.log(min,max)
+            connection.query($sql.showListInfo,[min,max],
                 (err,result)=>{
                 let r = {}
                 if (result!=false){
