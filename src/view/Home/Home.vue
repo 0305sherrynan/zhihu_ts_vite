@@ -53,6 +53,31 @@ const {loadMorePage,isLastPage} = useLoadMore(currentPage.value+1,3)
 </script>
 
 <style scoped lang="less">
+@media (min-width: 992px) {
+    .homePage{
+        max-width: 960px;
+    }
+    
+}
+@media (min-width: 768px) {
+    .homePage{
+        max-width: 720px;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .homePage{
+        max-width: 1140px;
+    }
+    
+}
+@media (min-width: 1400px) {
+    .homePage{
+        max-width: 1320px;
+    }
+    
+}
 
 .homePage{
 
