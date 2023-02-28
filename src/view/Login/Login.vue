@@ -19,7 +19,7 @@
                 <div class="btnLogin" @click="clickBtn">
                     <span>Log in</span>
                 </div>
-                <span class="login-left-lastSpan">Don't have an account?<a href="">Sign up</a></span>
+                <span class="login-left-lastSpan">Don't have an account?<router-link to="/register">Sign up</router-link></span>
             </form>
         </div>
         <div class="login-right">123</div>
