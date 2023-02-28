@@ -17,7 +17,7 @@ import createDom from '@/hooks/dom/createDom';
  * 父 App传给子 Loader
  */
 const props = defineProps<{
-    text:string
+    text:string |null
 }>()
 
 /**
