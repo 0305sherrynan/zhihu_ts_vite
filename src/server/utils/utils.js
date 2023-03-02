@@ -1,3 +1,5 @@
+const http = require("http");
+const fs = require('fs')
 let utils = {
     //连接池的内容拼接
     extends:function(target, source, flag) {
@@ -30,6 +32,24 @@ let utils = {
             this.jsonWrite(res,result)
              //释放连接
             connection.release()
+      },
+      //将图片存入本地
+      takeUrlToLocal:function(url){
+        // console.log(url)
+        // var reader  = new FileReader();
+        if (url) {
+          //reader转为base64
+          // reader.readAsDataURL(url);
+          
+          let dataBuffer = Buffer.from(url, 'base64')
+          let name = url.substr(0,5)
+          //写入到该目录上一级assets文件夹中名字叫image+'png
+          fs.writeFile('src/assets/icon/'+name+'.png', dataBuffer, function(err) {
+              if (err) console.log(err)
+          })
+          let nameAll = name+'.png'
+          return nameAll
       }
+}
 }
 module.exports = utils
