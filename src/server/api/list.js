@@ -19,6 +19,11 @@ router.post('/loginSearch',(req,res)=>{
     // console.log(req.body)
     $sql.loginSearch(req,res)
 })
+
+router.post('/postData',(req,res)=>{
+    $sql.postData(req,res)
+})
+
 router.delete('/deleteInfoById/:id',(req,res)=>{
     $sql.deleteInfoById(req,res)
 })
