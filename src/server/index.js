@@ -3,11 +3,12 @@ const express = require('express')
 const app = express()
 
 var bodyParser = require('body-parser');//用于req.body获取值的
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 // 创建 application/x-www-form-urlencoded 编码解析
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: true}));
-
+// app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json({limit: '5000mb'}));
+app.use(bodyParser.urlencoded({limit: '5000mb', extended: true}));
 //引入course.js等接口
 const user = require('./api/user.js')
 const list = require('./api/list')
