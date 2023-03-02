@@ -35,6 +35,9 @@ const returnImg = (item:ColumnProps)=>{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    // display: grid;
+    // grid: 270px / auto auto auto;
 }
 .list-box-each{
     padding: 15px;
