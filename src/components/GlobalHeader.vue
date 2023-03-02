@@ -12,7 +12,7 @@
         <ul v-else class="nav-brand-drop">
             <drop-down title="sherrynan">
                 <dropdown-item class="dropdown-item">
-                    <router-link to="/">新建文章</router-link>
+                    <router-link to="/create">新建文章</router-link>
                 </dropdown-item>
                 <dropdown-item class="dropdown-item">
                     <router-link to="/">我的专栏</router-link>
