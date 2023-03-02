@@ -25,21 +25,28 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 - bootstrap
 - vue-router
 - axios
-
+- mitt.js 事件总线
 ## project directory
    - components 
      - GlobalHeader.vue 顶部导航栏 不随界面变化而变化
+     - ColumnList.vue Home 主页的列表
    - base 基础构件
-     - DorpdownItem.vue 下拉框的单个框
-     - DropDown.vue 下拉框 
+     - oftenUI 常用构件
+       - DorpdownItem.vue 下拉框的单个框
+       - DropDown.vue 下拉框 
+     - zwzUI 自己构建的
+       - Message.vue
    - store pinia使用
      - index.ts 入口
      - user.ts 用户数据状态
    - types 放置接口和enum
+     - global.d.ts 全局可用的数据结构
      - api.d.ts 放置接口相关的数据结构
      - store.d.ts 放置store数据类型接口
      - ui.d.ts 放置libs/zwzUI 的数据类型接口
    - hooks 放置封装好的有关声明周期函数的函数
+     - store
+       - useLoadMore.ts 加载更多元素
      - event
        - isClickOutPage.ts 监听是否点击在外面
      - dom 
