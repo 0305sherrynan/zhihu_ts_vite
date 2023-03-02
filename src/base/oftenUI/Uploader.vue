@@ -38,9 +38,11 @@ enum fstatus{
 const fileStatus = ref<string>('')
 const fileRef = ref<HTMLInputElement | null>(null)
 const avatar = ref<string >('')
+const base64Img:string = ''
 const props = defineProps<{
     uploaded:{data:{url:string}} 
 }>()
+const emit = defineEmits(['file-uploaded-success'])
 const uploadedData = ref(props.uploaded)
 
 /**
@@ -51,17 +53,23 @@ const uploadedData = ref(props.uploaded)
 const triggerUpload = ():void=>{
     fileRef.value?.click()
 }
-const handleFileChange = (e:Event )=>{
+const handleFileChange = async (e:Event )=>{
     const target = e.target as HTMLInputElement
     const files = target.files
     if (files){
         const upLoadFile = files[0]
-        avatar.value = URL.createObjectURL(upLoadFile)
+        emit('file-uploaded-success',upLoadFile)
+
+        avatar.value = await URL.createObjectURL(upLoadFile)
+        // console.log(upLoadFile,avatar.value)
     }
     fileStatus.value = fstatus.LOADING
     try {
         uploadedData.value!.data.url = avatar.value
         Message.success('上传成功')
+        //emit父组件
+
+        
     } catch (error) {
         Message.error('上传失败')
     }
