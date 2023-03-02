@@ -42,5 +42,31 @@ module.exports = {
 
             })
         })
+    },
+    postData :(req, res)=>{
+        // console.log(req)
+        pool.getConnection((err,connection)=>{
+            const params = req.body
+            console.log(12313421,params)
+            let imgUrl = $utils.takeUrlToLocal(params.avatar)
+            connection.query($sql.postData,[params.id,params.title,imgUrl,params.description,params.account],
+                (err,result)=>{
+                let r = {}
+                if (result!=false){
+                    // const ulIsShow = result[0].ulIsShow
+                    // const token = result[0].token
+                    // const username = result[0].username
+                    console.log(result)
+                    r = {
+                        code:true,
+                        data:{
+                            message:'ok'
+                        }
+                    }
+                }
+                $utils.closeConnection(res,r,connection)
+
+            })
+        })
     }
 }
