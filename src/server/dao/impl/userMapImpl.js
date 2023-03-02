@@ -43,13 +43,13 @@ module.exports = {
             })
         })
     },
-    loginSearch :(req,res)=>{
+    registerAccount :(req,res)=>{
         pool.getConnection((err,connection)=>{
                     //获得参数
             const params = req.body
             // ['1','空我','男','2022-11-11','12','12'],
             // console.log(params)  
-            connection.query($sql.loginSearch,[params.username,params.password],
+            connection.query($sql.registerAccount,[params.nickname,params.password,params.account],
                     (err,result)=>{
                         console.log(result)
                         if (result!=false){
@@ -68,41 +68,21 @@ module.exports = {
                     })
         })
     },
-    deleteInfoById :(req,res)=>{
+    infoRows :(req, res)=>{
+        console.log(req)
         pool.getConnection((err,connection)=>{
-            //获得参数
-            const params = req.params.id
+            // console.log(req)
+            const params = req.query
             console.log(params)
-            connection.query($sql.deleteInfoById,[params],(err,result)=>{
-                let r = {}
-                console.log(result)
-                // if (result){
-                    r = {
-                        code:true,
-                        data:{
-                            message:'删除成功'
-                        }
-                    }
-                // }
-                $utils.closeConnection(res,r,connection)
-
-            })
-        })
-    },
-    addInfo :(req,res)=>{
-        pool.getConnection((err,connection)=>{
-                        //获得参数
-            const params = req.body
-            console.log(params)
-            connection.query($sql.addInfo,[params.username,params.password,params.id,params.time],
+            connection.query($sql.infoRows,[params.account],
                 (err,result)=>{
                 let r = {}
-                console.log(result)
-                if (result){
+                // console.log(typeof(result[0]['count(*)'])) //number
+                if (result!=false){
                     r = {
                         code:true,
                         data:{
-                            message:'添加成功'
+                            rows:result[0]['count(*)']
                         }
                     }
                 }
@@ -111,29 +91,73 @@ module.exports = {
             })
         })
     },
+
+    // deleteInfoById :(req,res)=>{
+    //     pool.getConnection((err,connection)=>{
+    //         //获得参数
+    //         const params = req.params.id
+    //         console.log(params)
+    //         connection.query($sql.deleteInfoById,[params],(err,result)=>{
+    //             let r = {}
+    //             console.log(result)
+    //             // if (result){
+    //                 r = {
+    //                     code:true,
+    //                     data:{
+    //                         message:'删除成功'
+    //                     }
+    //                 }
+    //             // }
+    //             $utils.closeConnection(res,r,connection)
+
+    //         })
+    //     })
+    // },
+    // addInfo :(req,res)=>{
+    //     pool.getConnection((err,connection)=>{
+    //                     //获得参数
+    //         const params = req.body
+    //         console.log(params)
+    //         connection.query($sql.addInfo,[params.username,params.password,params.id,params.time],
+    //             (err,result)=>{
+    //             let r = {}
+    //             console.log(result)
+    //             if (result){
+    //                 r = {
+    //                     code:true,
+    //                     data:{
+    //                         message:'添加成功'
+    //                     }
+    //                 }
+    //             }
+    //             $utils.closeConnection(res,r,connection)
+
+    //         })
+    //     })
+    // },
     
-    updateInfo :(req,res)=>{
-        pool.getConnection((err,connection)=>{
-                        //获得参数
-            const params = req.body
-            console.log(params)
-            connection.query($sql.updateInfo,[params.username,params.password,params.id,params.time,params.id],
-                (err,result)=>{
-                let r = {}
-                console.log(result)
-                if (result){
-                    r = {
-                        code:true,
-                        data:{
-                            message:'更新成功'
-                        }
-                    }
-                }
-                $utils.closeConnection(res,r,connection)
+    // updateInfo :(req,res)=>{
+    //     pool.getConnection((err,connection)=>{
+    //                     //获得参数
+    //         const params = req.body
+    //         console.log(params)
+    //         connection.query($sql.updateInfo,[params.username,params.password,params.id,params.time,params.id],
+    //             (err,result)=>{
+    //             let r = {}
+    //             console.log(result)
+    //             if (result){
+    //                 r = {
+    //                     code:true,
+    //                     data:{
+    //                         message:'更新成功'
+    //                     }
+    //                 }
+    //             }
+    //             $utils.closeConnection(res,r,connection)
 
-            })
-        })
-    },
+    //         })
+    //     })
+    // },
 /**
  * 删除teacher的信息
  * 
