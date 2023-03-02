@@ -20,12 +20,17 @@ const routes:RouteRecordRaw[] = [
         path:'/login',
         name:'login',
         component:()=>import('../view/Login/Login.vue')
+    },
+    {
+        path:'/register',
+        name:'register',
+        component:()=>import('../view/register/Register.vue')
+    },
+    {
+        path:'/create',
+        name:'create',
+        component:()=>import('../view/Post/CreateditPost.vue')
     }
-    // {
-    //     path:'/user',
-    //     name:'user',
-    //     component:()=>import('../pages/user/index.vue')
-    // }
 ]
 const router =  createRouter({
     routes,
