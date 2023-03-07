@@ -42,7 +42,7 @@ let utils = {
           // reader.readAsDataURL(url);
           
           let dataBuffer = Buffer.from(url, 'base64')
-          let name = url.substr(0,5)
+          let name = url.substr(0,5).replace(/\//g,'')
           //写入到该目录上一级assets文件夹中名字叫image+'png
           fs.writeFile('src/assets/icon/'+name+'.png', dataBuffer, function(err) {
               if (err) console.log(err)
