@@ -5,20 +5,23 @@
                 <img :src="returnImg(item)" alt="">
                 <h5>{{ item.title }}</h5>
                 <p>{{ item.description }}</p>
-                <router-link to="" class="skip-btn">进入专栏</router-link>
+                <router-link :to="`/columns/${item.id}`" class="skip-btn">进入专栏</router-link>
             </div>
     </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import {ColumnProps} from '#/store'
+import {ColumnProps,ListProps} from '#/store'
+import { PropType } from 'vue';
+
 /**
  * 数据 
  */
 
 const props = defineProps<{
-    list:ColumnProps[]
+    // list:Object as PropType<ListProps<ColumnProps>>
+    list:ListProps<ColumnProps>
 }>()
 
 /**
