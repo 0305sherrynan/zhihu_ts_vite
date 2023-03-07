@@ -57,7 +57,7 @@ import { RuleProps } from '@/types/new';
 // import { watch } from 'fs';
 import { ref, watch} from 'vue';
 import {useUserStore} from '@/store/user'
-
+import {timeToStr} from '@/utils/time/time'
 
 /**
  * 数据
@@ -110,7 +110,8 @@ const onFormSubmit = async (result:boolean)=>{
                                  description:contentVal.value,
                                  id:(state.infoRow+1).toString(),
                                  account:state.user.account,
-                                 avatar:IMGUrl
+                                 avatar:IMGUrl,
+                                 createAt:timeToStr()
                                 })
     }
 }
